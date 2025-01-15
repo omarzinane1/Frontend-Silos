@@ -1,0 +1,177 @@
+<div class="flex justify-center items-center mt-4">
+  <div class="flex flex-col gap-2">
+    <!--section pour imprimer les Silos-->
+    <div
+      class="flex lg:flex-row flex-col items-center shadow-lg justify-between px-2 bg-slate-200 w-full"
+    >
+      <div class="flex lg:flex-row flex-col items-center gap-2 p-3 w-full">
+        <input
+          type="date"
+          class="p-2 rounded-sm w-64 text-center"
+          placeholder="premier date"
+        />
+
+        <input
+          class="p-2 rounded-sm w-64 text-center"
+          type="date"
+          placeholder="dernier date"
+        />
+        <button
+          class="bg-dark-purple p-2 px-3 text-white font-medium rounded-md"
+          type="submit"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div>
+        <button
+          class="bg-dark-purple p-2 px-3 text-white font-medium rounded-md"
+          type="submit"
+        >
+          <i class="fa-solid fa-print"></i>
+        </button>
+      </div>
+    </div>
+    <!--fin section pour imprimer-->
+    <div class="mt-8 overflow-auto bg-white shadow-md">
+      <table class="min-w-full bg-gray-50">
+        <thead class="bg-gray-200">
+          <tr>
+            <th
+              class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              N° silo
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Produit
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Stock initial
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Entre
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Consommation Auto
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Stock Final
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Date Validation
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Statut
+            </th>
+            <th
+              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody class="overflow-y-auto">
+          <tr class="bg-gray-50 hover:bg-gray-200">
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">jjj</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">100</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">10</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">13</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">520</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">500</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">100</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              <span class="text-red-600 text-base font-semibold p-2">{{
+                6000
+              }}</span>
+            </td>
+            <td
+              class="flex flex-col items-center gap-1 px-6 py-4 text-sm text-gray-700 border-b"
+            >
+              <div class="flex flex-col items-start gap-2">
+                <button type="submit" class="text-blue-600">
+                  <i class="fa-solid fa-pen-to-square"></i> Modifier
+                </button>
+                <button type="submit" class="text-red-600">
+                  <i class="fa-solid fa-trash"></i> Supprimer
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="py-2">
+      <button
+        class="bg-zinc-500 text-white text-center text-base font-medium p-2 px-5"
+        type="submit"
+      >
+        Exporter en excel-csv <i class="fa-solid fa-file-export"></i>
+      </button>
+    </div>
+    <div
+      *ngIf="false"
+      class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-10"
+    >
+      <form class="bg-white p-6 rounded-lg lg:w-1/3 w-72 text-center">
+        <!-- Assurez-vous d'utiliser ngSubmit pour déclencher onSubmit -->
+        <h2 class="text-lg font-bold">Modifier un Chèque</h2>
+        <input
+          type="text"
+          placeholder="N° Chèque"
+          class="p-2 rounded-md w-full mt-2"
+          name="numCheque"
+          required
+        />
+        <input
+          type="text"
+          placeholder="N° Client"
+          class="p-2 rounded-md w-full mt-2"
+          name="clientId"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Montant"
+          class="p-2 rounded-md w-full mt-2"
+          name="montant"
+          required
+        />
+        <input
+          type="date"
+          class="p-2 rounded-md w-full mt-2"
+          name="dateReception"
+          required
+        />
+        <div class="flex justify-center mt-4">
+          <button
+            type="submit"
+            class="bg-dark-purple text-white p-2 rounded-md"
+          >
+            <i class="fa-solid fa-floppy-disk"></i> Enregistrer
+          </button>
+          <button
+            type="button"
+            class="bg-gray-400 text-white p-2 rounded-md ml-2"
+          >
+            <i class="fa-solid fa-xmark"></i> Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+    <!--End Update cheque form-->
+  </div>
+</div>
