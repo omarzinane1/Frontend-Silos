@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroComponent } from './Components/hero/hero.component';
@@ -29,6 +29,7 @@ import { ConsultationComponent } from './Components/consultation/consultation.co
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     //JwtModule,
   ],
   providers: [],

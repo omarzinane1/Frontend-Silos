@@ -98,15 +98,15 @@
           </tr>
         </thead>
         <tbody class="overflow-y-auto">
-          <tr class="bg-gray-50 hover:bg-gray-200">
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">M01</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">Sel</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">50</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">50</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">60</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">- 10</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">2</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">200</td>
+          <tr class="bg-gray-50 hover:bg-gray-200" *ngFor="let silo of silos, let i = index">
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.numsilo}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.produit}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.stockI}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.entre}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.consommation}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.stockf}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.statut}}</td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.datevalidation}}</td>
 
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
               <button type="submit" class="bg-green-400 p-2 px-5">

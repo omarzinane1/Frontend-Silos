@@ -12,6 +12,7 @@ const routes: Routes = [
     component: SidebarComponent,
     children: [
       { path: 'silo', component: SiloComponent },
+      { path: 'hero', component: HeroComponent },
       { path: 'export', component: ExporterComponent },
       { path: 'consultation', component: ConsultationComponent },
     ],
