@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SiloComponent } from './Components/silo/silo.component';
 import { ConsultationComponent } from './Components/consultation/consultation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -30,6 +32,13 @@ import { ConsultationComponent } from './Components/consultation/consultation.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({ timeOut: 5000,
+    closeButton: true,
+    progressBar: true,
+    positionClass: 'toast-top-right',
+    preventDuplicates: true,
+    toastClass: 'custom-toast', }),
     //JwtModule,
   ],
   providers: [],

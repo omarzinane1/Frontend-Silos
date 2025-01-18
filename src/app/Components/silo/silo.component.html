@@ -33,16 +33,13 @@
         <option value="paye">Payé</option>
       </select> -->
       <input
-        type="text"
-        placeholder="toutes les données"
         class="p-2 rounded-sm w-[80%] text-center"
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Rechercher..."
+        (input)="performSearch()"
       />
-      <button
-        class="bg-dark-purple p-2 px-3 text-white font-medium rounded-md"
-        type="submit"
-      >
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+
     </div>
   </div>
   <div>
@@ -98,29 +95,72 @@
           </tr>
         </thead>
         <tbody class="overflow-y-auto">
-          <tr class="bg-gray-50 hover:bg-gray-200" *ngFor="let silo of silos, let i = index">
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.numsilo}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.produit}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.stockI}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.entre}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.consommation}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.stockf}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.statut}}</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">{{silo.datevalidation}}</td>
-
+          <tr
+            class="bg-gray-50 hover:bg-gray-200"
+            *ngFor="let silo of silos; let i = index"
+          >
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
-              <button type="submit" class="bg-green-400 p-2 px-5">
-                Modifier
-              </button>
+              {{ silo.numsilo }}
             </td>
-            <!-- <td >
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.produit }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.stocki }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.entre }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.consumation }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.stockf }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.datevalidation }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.statut }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              <!-- Bouton Modifier -->
               <button
                 type="submit"
-                class="text-2xl"
+                class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center"
               >
-                <i class="fa-solid fa-share-from-square"></i>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M15.232 2.232a2.5 2.5 0 013.536 3.536l-10 10a2.5 2.5 0 01-1.06.662l-4 1a1 1 0 01-1.265-1.265l1-4a2.5 2.5 0 01.662-1.06l10-10zM12.5 3.5L16.5 7.5 15 9 11 5l1.5-1.5zM5 12l3 3-1.5 1.5-2.5-.5-.5-2.5L5 12z"
+                  />
+                </svg>
               </button>
-            </td> -->
+
+              <!-- Bouton Supprimer -->
+              <button
+                type="submit"
+                class="bg-red-500 text-white p-2 rounded hover:bg-red-600 flex items-center"
+                (click)="deleteSilo(silo.id)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M9 2a1 1 0 00-1 1v1H4.5a1 1 0 00-.99.858L3 7v1a1 1 0 001 1h12a1 1 0 001-1V7l-.51-2.142A1 1 0 0015.5 4H11V3a1 1 0 00-1-1H9zm3 3V3H8v2h4zm-7.5 4a.5.5 0 00-.5.5V15a2 2 0 002 2h8a2 2 0 002-2V9.5a.5.5 0 00-.5-.5H4.5zM7 11a1 1 0 112 0v4a1 1 0 11-2 0v-4zm6 0a1 1 0 112 0v4a1 1 0 11-2 0v-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -139,6 +179,7 @@
         class="p-2 rounded-md w-full mt-2"
         name="numsilo"
         required
+        [(ngModel)]="numsilo"
       />
       <input
         type="text"
@@ -146,6 +187,7 @@
         class="p-2 rounded-md w-full mt-2"
         name="produit"
         required
+        [(ngModel)]="produit"
       />
       <input
         type="number"
@@ -153,6 +195,7 @@
         class="p-2 rounded-md w-full mt-2"
         name="stockI"
         required
+        [(ngModel)]="stocki"
       />
       <input
         type="number"
@@ -160,6 +203,7 @@
         class="p-2 rounded-md w-full mt-2"
         name="entre"
         required
+        [(ngModel)]="entre"
       />
       <input
         type="number"
@@ -167,9 +211,14 @@
         class="p-2 rounded-md w-full mt-2"
         name="consommation"
         required
+        [(ngModel)]="consumation"
       />
       <div class="flex justify-center mt-4">
-        <button type="submit" class="bg-dark-purple text-white p-2 rounded-md">
+        <button
+          type="submit"
+          class="bg-dark-purple text-white p-2 rounded-md"
+          (click)="postSilo()"
+        >
           <i class="fa-solid fa-floppy-disk"></i> Enregistrer
         </button>
         <button
