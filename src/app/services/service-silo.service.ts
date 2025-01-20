@@ -28,7 +28,7 @@ export class ServiceSiloService {
     dateReception2: string
   ): Observable<any> {
     return this.http.get(
-      `${this.Api}?date_reception=${dateReception1}&date_validation=${dateReception2}`
+      `${this.Api}filter?startDate=${dateReception1}&endDate=${dateReception2}`
     );
   }
    // la service pour genere une file pdF
@@ -37,7 +37,7 @@ export class ServiceSiloService {
     endDate: string
   ): Observable<Blob> {
     return this.http.get(
-      `${this.Api}exportPDF?date_reception=${startDate}&date_validation=${endDate}`,
+      `${this.Api}exportPDF?startDate=${startDate}&endDate=${endDate}`,
       { responseType: 'blob' }
     );
   }
@@ -46,12 +46,12 @@ export class ServiceSiloService {
     dateReception1: string,
     dateReception2: string
   ): void {
-    const url = `${this.Api}ExporterDATA?date_reception=${dateReception1}&date_validation=${dateReception2}`;
+    const url = `${this.Api}ExporterDATA?startDate=${dateReception1}&endDate=${dateReception2}`;
     this.http.get(url, { responseType: 'blob' }).subscribe((blob) => {
       const downloadUrl = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = downloadUrl;
-      a.download = 'cheques_excel.xlsx';
+      a.download = 'silos.xlsx';
       a.click();
     });
   }

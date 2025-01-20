@@ -84,7 +84,7 @@ export class SiloComponent implements OnInit {
       });
     }
   }
-
+  //search by any data
   performSearch(): void {
     this.service.searchSilos(this.searchQuery).subscribe(
       (response) => {
@@ -95,6 +95,7 @@ export class SiloComponent implements OnInit {
       }
     );
   }
+  
   isFormVisible = false;
   FormVisible() {
     this.isFormVisible = !this.isFormVisible;

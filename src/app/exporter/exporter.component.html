@@ -9,16 +9,19 @@
           type="date"
           class="p-2 rounded-sm w-64 text-center"
           placeholder="premier date"
+          [(ngModel)]="dateReception1"
         />
 
         <input
           class="p-2 rounded-sm w-64 text-center"
           type="date"
           placeholder="dernier date"
+          [(ngModel)]="dateReception2"
         />
         <button
           class="bg-dark-purple p-2 px-3 text-white font-medium rounded-md"
           type="submit"
+          (click)="getFilteredData()"
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -27,6 +30,7 @@
         <button
           class="bg-dark-purple p-2 px-3 text-white font-medium rounded-md"
           type="submit"
+          (click)="downloadPdf()"
         >
           <i class="fa-solid fa-print"></i>
         </button>
@@ -85,19 +89,36 @@
           </tr>
         </thead>
         <tbody class="overflow-y-auto">
-          <tr class="bg-gray-50 hover:bg-gray-200">
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">jjj</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">100</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">10</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">13</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">520</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">500</td>
-            <td class="px-6 py-4 text-sm text-gray-700 border-b">100</td>
+          <tr class="bg-gray-50 hover:bg-gray-200" *ngFor="let silo of silos; let i = index">
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.numsilo }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.produit }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.stocki }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.entre }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.consumation }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.stockf }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.datevalidation }}
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 border-b">
+              {{ silo.statut }}
+            </td>
+            <!-- <td class="px-6 py-4 text-sm text-gray-700 border-b">
               <span class="text-red-600 text-base font-semibold p-2">{{
                 6000
               }}</span>
-            </td>
+            </td> -->
             <td
               class="flex flex-col items-center gap-1 px-6 py-4 text-sm text-gray-700 border-b"
             >
@@ -118,6 +139,7 @@
       <button
         class="bg-zinc-500 text-white text-center text-base font-medium p-2 px-5"
         type="submit"
+        (click)="exportChequesTOExcel()"
       >
         Exporter en excel-csv <i class="fa-solid fa-file-export"></i>
       </button>

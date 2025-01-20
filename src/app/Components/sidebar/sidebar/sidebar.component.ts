@@ -25,11 +25,6 @@ export class SidebarComponent {
       link: '/export',
     },
     {
-      icon: 'fa-id-card',
-      title: 'Consultation',
-      link: '/consultation',
-    },
-    {
       icon: 'fa-right-from-bracket',
       title: 'Se déconnecter',
       link: '',
