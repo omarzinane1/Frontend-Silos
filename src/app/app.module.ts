@@ -12,6 +12,10 @@ import { SiloComponent } from './Components/silo/silo.component';
 import { ConsultationComponent } from './Components/consultation/consultation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './Components/connexion/login/login.component';
+import { RegisterComponent } from './Components/connexion/register/register.component';
+import { NotFoundComponent } from './Components/connexion/not-found/not-found.component';
+import { PremissenComponent } from './Components/connexion/premissen/premissen.component';
 
 
 
@@ -23,6 +27,10 @@ import { ToastrModule } from 'ngx-toastr';
     SidebarComponent,
     SiloComponent,
     ConsultationComponent,
+    LoginComponent,
+    RegisterComponent,
+    NotFoundComponent,
+    PremissenComponent,
 
   ],
   imports: [

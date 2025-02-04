@@ -81,17 +81,12 @@
             >
               Statut
             </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b"
-            >
-              Actions
-            </th>
           </tr>
         </thead>
         <tbody class="overflow-y-auto">
           <tr class="bg-gray-50 hover:bg-gray-200" *ngFor="let silo of silos; let i = index">
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
-              {{ silo.numsilo }}
+              {{ silo.silo }}
             </td>
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
               {{ silo.produit }}
@@ -119,18 +114,7 @@
                 6000
               }}</span>
             </td> -->
-            <td
-              class="flex flex-col items-center gap-1 px-6 py-4 text-sm text-gray-700 border-b"
-            >
-              <div class="flex flex-col items-start gap-2">
-                <button type="submit" class="text-blue-600">
-                  <i class="fa-solid fa-pen-to-square"></i> Modifier
-                </button>
-                <button type="submit" class="text-red-600">
-                  <i class="fa-solid fa-trash"></i> Supprimer
-                </button>
-              </div>
-            </td>
+
           </tr>
         </tbody>
       </table>
@@ -139,7 +123,7 @@
       <button
         class="bg-zinc-500 text-white text-center text-base font-medium p-2 px-5"
         type="submit"
-        (click)="exportChequesTOExcel()"
+        (click)="exportSilosTOExcel()"
       >
         Exporter en excel-csv <i class="fa-solid fa-file-export"></i>
       </button>

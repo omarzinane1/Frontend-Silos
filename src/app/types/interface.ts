@@ -6,6 +6,16 @@ export interface silo {
   consumation: number;
   stockf: number;
   statut: string;
-  datevalidation:string
-
+  datevalidation: string;
+}
+export interface Item {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+}
+export interface User {
+  name: string;
+  email: string;
+  password: string;
 }

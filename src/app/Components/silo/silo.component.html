@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-2">
   <div>
     <h1 class="font-bold text-xl uppercase">
-      <i class="fa-solid fa-user"></i> Bienvenue: {{ isFormVisible }}
+      <i class="fa-solid fa-user"></i> Bienvenue: {{ user.name }}
     </h1>
   </div>
   <div
@@ -100,7 +100,7 @@
             *ngFor="let silo of silos; let i = index"
           >
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
-              {{ silo.numsilo }}
+              {{ silo.silo }}
             </td>
             <td class="px-6 py-4 text-sm text-gray-700 border-b">
               {{ silo.produit }}
@@ -128,6 +128,8 @@
               <button
                 type="submit"
                 class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 flex items-center"
+                (click)="toggleFormUpdate()"
+                (click)="getElementObj(silo.id)"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -225,6 +227,76 @@
           type="button"
           class="bg-gray-400 text-white p-2 rounded-md ml-2"
           (click)="FormVisible()"
+        >
+          <i class="fa-solid fa-xmark"></i> Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+  <!--le form pour modifier les silos-->
+  <div
+    *ngIf="isFormVisibleUpdate"
+    class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-10"
+  >
+    <form class="bg-white p-6 rounded-lg lg:w-1/3 w-72 text-center">
+      <h2 class="text-lg font-bold">Modifier un Silo</h2>
+      <input
+        type="text"
+        placeholder="N° Silo"
+        class="p-2 rounded-md w-full mt-2"
+        name="numsilo"
+        required
+        [(ngModel)]="numsilo"
+        [value]="obj.numsilo"
+      />
+      <input
+        type="text"
+        placeholder="Produit"
+        class="p-2 rounded-md w-full mt-2"
+        name="produit"
+        required
+        [(ngModel)]="produit"
+        [value]="obj.produit"
+      />
+      <input
+        type="number"
+        placeholder="Stock initial"
+        class="p-2 rounded-md w-full mt-2"
+        name="stocki"
+        required
+        [(ngModel)]="stocki"
+        [value]="obj.stocki"
+      />
+      <input
+        type="number"
+        placeholder="Entre"
+        class="p-2 rounded-md w-full mt-2"
+        name="entre"
+        required
+        [(ngModel)]="entre"
+        [value]="obj.entre"
+      />
+      <input
+        type="number"
+        placeholder="Consommation Auto"
+        class="p-2 rounded-md w-full mt-2"
+        name="consumation"
+        required
+        [(ngModel)]="consumation"
+        [value]="obj.consumation"
+      />
+      <div class="flex justify-center mt-4">
+        <button
+          type="submit"
+          class="bg-dark-purple text-white p-2 rounded-md"
+          (click)="updateSilo(obj.id)"
+        >
+          <i class="fa-solid fa-floppy-disk"></i> Modifier
+        </button>
+        <button
+          type="button"
+          class="bg-gray-400 text-white p-2 rounded-md ml-2"
+          (click)="toggleFormUpdate()"
         >
           <i class="fa-solid fa-xmark"></i> Annuler
         </button>

@@ -12,17 +12,17 @@ export class SidebarComponent {
     {
       icon: 'fa-house',
       title: 'Accueil',
-      link: '/sidebar',
+      link: '/Sidebar',
     },
     {
       icon: 'fa-circle-check',
       title: 'Silo',
-      link: '/silo',
+      link: 'silo',
     },
     {
       icon: 'fa-cloud-arrow-down',
       title: 'Exportation',
-      link: '/export',
+      link: 'export',
     },
     {
       icon: 'fa-right-from-bracket',

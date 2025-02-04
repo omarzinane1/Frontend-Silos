@@ -11,7 +11,6 @@ import { silo } from 'src/app/types/interface';
   styleUrls: ['./silo.component.css'],
 })
 export class SiloComponent implements OnInit {
-  Name = 'Admin';
   silos: any[] = [];
   numsilo = '';
   produit = '';
@@ -19,7 +18,8 @@ export class SiloComponent implements OnInit {
   entre = '';
   consumation = '';
   searchQuery = '';
-  anything:string = '';
+  anything: string = '';
+
 
   constructor(
     private service: ServiceSiloService,
@@ -30,6 +30,7 @@ export class SiloComponent implements OnInit {
   ngOnInit(): void {
     this.siloData();
   }
+  user = this.service.getUser();
   //get data
   siloData() {
     this.service.GetSilosData().subscribe({
@@ -44,7 +45,7 @@ export class SiloComponent implements OnInit {
   postSilo() {
     try {
       let silo = {
-        numsilo: this.numsilo,
+        silo: this.numsilo,
         produit: this.produit,
         stocki: this.stocki,
         entre: this.entre,
@@ -95,7 +96,49 @@ export class SiloComponent implements OnInit {
       }
     );
   }
-  
+
+  obj: any = {};
+  getElementObj(id: any): any {
+    this.service.GetSilosData().subscribe((res: any) => {
+      this.silos = res;
+      this.silos.map((element) => {
+        if (element.id == id) this.obj = element;
+      });
+    });
+  }
+  siloArray: any[] = [];
+  getElement(id: any): any {
+    this.service.GetSilosData().subscribe((res: any) => {
+      this.siloArray = res;
+      this.siloArray.map((element) => {
+        if (element.id == id) return element;
+      });
+    });
+  }
+  updateSilo(id: any) {
+    let Item = {
+      silo: this.numsilo,
+      produit: this.produit,
+      stocki: this.stocki,
+      entre: this.entre,
+      consumation: this.consumation,
+    };
+    this.service.updatesilo(id, Item).subscribe(
+      (updatedUser) => {
+        this.siloArray = this.siloArray.filter((Item) => (Item.id = id));
+        this.siloData();
+        this.toastr.success(updatedUser.message, 'Succès');
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Erreur');
+      }
+    );
+  }
+  isFormVisibleUpdate: boolean = false;
+  toggleFormUpdate() {
+    this.isFormVisibleUpdate = !this.isFormVisibleUpdate;
+  }
+
   isFormVisible = false;
   FormVisible() {
     this.isFormVisible = !this.isFormVisible;
